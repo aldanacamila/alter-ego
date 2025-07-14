@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  color: white;
+  font-family: 'Unbounded', sans-serif;
+}
+
+/* Navbar */
+.icon-nav {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 1rem;
+  z-index: 100;
+}
+
+.icon-nav a {
+  color: #fff;
+  font-size: 1.5rem;
+  transition: transform 0.3s;
+}
+
+.icon-nav a:hover {
+  transform: scale(1.2);
+}
+
+/* Secciones */
+.seccion-info {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  line-height: 1.7;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.seccion-info h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.08em;
+}
+
+/* Paleta */
+.paleta {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* Formulario */
+form {
+  max-width: 600px;
+  margin: 2rem auto;
+  text-align: left;
+}
+
+form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid white;
+  border-radius: 1.5rem;
+  background-color: transparent;
+  color: white;
+  font-family: 'Unbounded', sans-serif;
+}
+
+form textarea {
+  height: 150px;
+}
+
+
+.next-btn {
+  background: white;
+  color: black;
+  border: none;
+  padding: 12px 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.next-btn:hover {
+  background: #ddd;
+}
+
+
+/* Footer */
+.footer {
+  background: linear-gradient(to top, #3a3a3a, #000000);
+  color: white;
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.footer-left,
+.footer-right {
+  flex: 1 1 300px;
+}
+
+.footer-right ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-right li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-right a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-right a:hover {
+  text-decoration: underline;
+}

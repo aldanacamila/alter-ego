@@ -1,0 +1,38 @@
+body{
+    background-color: black;
+}
+
+.zoom:hover {
+    transition: transform 0.3s ease-in-out;
+    transform: scale(1.1); 
+}
+
+.zoom2:hover {
+    transition: transform 0.3s ease-in-out;
+    transform: scale(1.1); 
+}
+
+.zoom3:hover {
+    transition: transform 0.3s ease-in-out;
+    transform: scale(1.1); 
+}
+
+.btn-secondary {
+    font-size: large;
+}
+
+
+.selected {
+  transform: scale(1.07);
+  background-color: #2e2e44 !important;
+  box-shadow: 0 0 12px #8a8a8a;
+  transition: all 0.3s ease-in-out;
+}
+
+img.selected {
+  box-shadow: 0 0 12px #8a8a8a;
+}
+
+img[dato-personalidad], button[dato-personalidad] {
+  transition: all 0.3s ease-in-out;
+}

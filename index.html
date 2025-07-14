@@ -1,0 +1,123 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alter Ego</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Inter:wght@300;500&display=swap" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Nav-->
+  <nav class="icon-nav">
+    <a href="coleccion.html" title="Colección"><i class="bi bi-eye"></i></a>
+    <a href="test.html" title="Experiencia"><i class="bi bi-stars"></i></a>
+    <a href="nosotros.html" title="Manifesto"><i class="bi bi-feather"></i></a>
+
+    <a href="carrito.html" title="Carrito"><i class="bi bi-bag"></i>
+     <span class="cart-count">0</span>
+    </a>
+  </nav>
+  <section class="hero">
+
+<div class="intro-container">
+  <h1 id="brandIntro">ALTER EGO</h1>
+</div>
+
+    <div id="bg-animation"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script>
+  const fonts = [
+    "'Playfair Display', serif",
+    "'Raleway', sans-serif",
+    "'Unbounded', sans-serif"
+  ];
+
+  const intro = document.getElementById("brandIntro");
+
+  let index = 0;
+  const switchFonts = () => {
+    intro.style.fontFamily = fonts[index % fonts.length];
+    index++;
+  };
+
+  gsap.to(intro, {
+    opacity: 1,
+    duration: 1,
+    onStart: () => {
+      const fontInterval = setInterval(switchFonts, 200);
+      setTimeout(() => {
+        clearInterval(fontInterval);
+        gsap.to(".intro-container", {
+          opacity: 0,
+          duration: 1,
+          delay: 0.5,
+          onComplete: () => {
+            document.querySelector(".intro-container").style.display = "none";
+          }
+        });
+      }, 2500); 
+    }
+  });
+</script>
+<script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+<script>
+ window.addEventListener('load', () => {
+  const btn = document.getElementById('discoverBtn');
+  const logo = document.getElementById('logo');
+
+  gsap.to([btn, logo], {
+    opacity: 1,
+    y: 0,
+    delay: 4,
+    duration: 1,
+    ease: "power2.out"
+  });
+});
+
+    </script>
+  </script>
+
+<img src="img/logo.png" alt="Logo Alter Ego" id="logo" class="logo-hidden">
+
+<a href="test.html" id="discoverBtn" class="discover-btn">Descubrí tu Alter Ego </a>
+  </section>
+
+  <script>
+    // Intro animation
+    gsap.from("#introText", {
+      opacity: 0,
+      y: -50,
+      duration: 2,
+      ease: "power3.out"
+    });
+
+    // Background cosmic animation
+    const bg = document.getElementById("bg-animation");
+    for (let i = 0; i < 60; i++) {
+      const star = document.createElement("div");
+      star.className = "star";
+      star.style.top = Math.random() * 100 + "%";
+      star.style.left = Math.random() * 100 + "%";
+      bg.appendChild(star);
+    }
+
+    gsap.to(".star", {
+      duration: 2,
+      y: "-=20",
+      yoyo: true,
+      repeat: -1,
+      ease: "sine.inOut",
+      stagger: 0.05
+      
+    });
+    
+  </script>
+
+  
+</body>
+</html>
