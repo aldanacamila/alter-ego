@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700&display=swap');
+
+/* Estilo base */
+body {
+  background-color: #000;
+  color: white;
+  font-family: 'Unbounded', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Textos */
+h2 {
+  font-size: 2rem;
+  color: white;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+p {
+  font-size: smaller;
+  color: rgb(198, 194, 194);
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Navbar flotante */
+.icon-nav {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 1rem;
+  z-index: 999;
+}
+
+.icon-nav a {
+  color: #fff;
+  font-size: 1.5rem;
+  transition: transform 0.3s;
+}
+
+.icon-nav a:hover {
+  transform: scale(1.2);
+}
+
+/* Footer */
+footer {
+  background: linear-gradient(to top, #3a3a3a, #000000);
+  color: white;
+  padding: 2rem 0;
+}
+
+footer a {
+  color: rgb(198, 194, 194);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}

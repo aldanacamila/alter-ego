@@ -1,0 +1,54 @@
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+section.container {
+  flex: 1;
+}
+
+
+.producto-carrito {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid #333;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.producto-carrito img {
+  width: 90px;
+  border-radius: 12px;
+}
+
+.descripcion {
+  flex-grow: 1;
+}
+
+.contador {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contador button {
+  background: white;
+  color: black;
+  font-weight: bold;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+}
+
+.precio-total {
+  background: #ccc;
+  color: black;
+  padding: 8px 16px;
+  border-radius: 10px;
+}
+
