@@ -1,10 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-  const carritoContainer = document.getElementById("carrito-contenido");
+  const contenedor = document.getElementById("carrito-contenido");
   const totalEl = document.getElementById("total-carrito");
+  contenedor.innerHTML = "";
 
   if (carrito.length === 0) {
-    carritoContainer.innerHTML = "<p>No hay productos en el carrito.</p>";
+    contenedor.innerHTML = "<p>No hay productos en el carrito.</p>";
     totalEl.textContent = "Total: $0";
     return;
   }
@@ -15,14 +16,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const subtotal = producto.precio * producto.cantidad;
     total += subtotal;
 
-    const productoEl = document.createElement("div");
-    productoEl.classList.add("producto-carrito");
+    const div = document.createElement("div");
+    div.className = "producto-carrito";
 
-    productoEl.innerHTML = `
+    div.innerHTML = `
       <img src="${producto.imagen}" alt="${producto.nombre}">
       <div class="descripcion">
         <strong>${producto.nombre}</strong><br>
-        Precio unitario: $${producto.precio.toLocaleString()}<br>
         Subtotal: $${subtotal.toLocaleString()}
       </div>
       <div class="contador">
@@ -32,20 +32,20 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     `;
 
-    carritoContainer.appendChild(productoEl);
+    contenedor.appendChild(div);
   });
 
   totalEl.textContent = `Total: $${total.toLocaleString()}`;
 });
 
 function cambiarCantidad(index, cambio) {
-  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-
+  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
   carrito[index].cantidad += cambio;
+
   if (carrito[index].cantidad <= 0) {
     carrito.splice(index, 1);
   }
 
   localStorage.setItem("carrito", JSON.stringify(carrito));
-  location.reload(); // recarga para re-renderizar
+  location.reload();
 }

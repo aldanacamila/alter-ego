@@ -72,7 +72,7 @@
     document.getElementById("agregarCarritoBtn").addEventListener("click", () => {
       const producto = {
         nombre: "Remera Baggy Azul Navy",
-        imagen: "colecciones/echo/prenda1.png",
+        imagen: "colecciones/echo/prenda1.png", // 👈 Ruta relativa al sitio, para que el carrito la encuentre
         precio: 30000,
         cantidad: 1
       };
@@ -88,6 +88,7 @@
 
       localStorage.setItem("carrito", JSON.stringify(carrito));
 
+      // Actualizar contador en el navbar si existe
       const cartCountEl = document.getElementById("cartCount");
       if (cartCountEl) {
         const totalItems = carrito.reduce((sum, prod) => sum + prod.cantidad, 0);
