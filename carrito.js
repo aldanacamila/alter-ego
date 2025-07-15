@@ -1,50 +1,51 @@
-const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-const carritoContainer = document.getElementById("carrito-contenido");
-
-
-function cambiarCantidad(index, cambio) {
-  carrito[index].cantidad += cambio;
-
-  if (carrito[index].cantidad <= 0) {
-    carrito.splice(index, 1);
-  }
-
-  localStorage.setItem("carrito", JSON.stringify(carrito));
-  renderizarCarrito();
-}
-
-renderizarCarrito();
-
-
-
-
-function mostrarCarrito() {
+document.addEventListener("DOMContentLoaded", () => {
   const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-  const contenedor = document.getElementById("carrito-contenido");
+  const carritoContainer = document.getElementById("carrito-contenido");
   const totalEl = document.getElementById("total-carrito");
-  contenedor.innerHTML = "";
 
   if (carrito.length === 0) {
-    contenedor.innerHTML = "<p>No hay productos en el carrito.</p>";
+    carritoContainer.innerHTML = "<p>No hay productos en el carrito.</p>";
     totalEl.textContent = "Total: $0";
     return;
   }
 
   let total = 0;
 
-  carrito.forEach(producto => {
+  carrito.forEach((producto, index) => {
     const subtotal = producto.precio * producto.cantidad;
     total += subtotal;
 
-    contenedor.innerHTML += `
-      <div class="mb-4 border-bottom pb-3">
-        <img src="${producto.imagen}" alt="${producto.nombre}" style="width: 80px;" class="me-3">
+    const productoEl = document.createElement("div");
+    productoEl.classList.add("producto-carrito");
+
+    productoEl.innerHTML = `
+      <img src="${producto.imagen}" alt="${producto.nombre}">
+      <div class="descripcion">
         <strong>${producto.nombre}</strong><br>
-        Cantidad: ${producto.cantidad} – Subtotal: $${subtotal.toLocaleString()}
+        Precio unitario: $${producto.precio.toLocaleString()}<br>
+        Subtotal: $${subtotal.toLocaleString()}
+      </div>
+      <div class="contador">
+        <button onclick="cambiarCantidad(${index}, -1)">−</button>
+        <span>${producto.cantidad}</span>
+        <button onclick="cambiarCantidad(${index}, 1)">+</button>
       </div>
     `;
+
+    carritoContainer.appendChild(productoEl);
   });
 
   totalEl.textContent = `Total: $${total.toLocaleString()}`;
+});
+
+function cambiarCantidad(index, cambio) {
+  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+  carrito[index].cantidad += cambio;
+  if (carrito[index].cantidad <= 0) {
+    carrito.splice(index, 1);
+  }
+
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+  location.reload(); // recarga para re-renderizar
 }
-document.addEventListener("DOMContentLoaded", mostrarCarrito);
